@@ -1,0 +1,4 @@
+module CScrypt {
+    header "crypto_scrypt.h"
+    export *
+}
