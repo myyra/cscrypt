@@ -52,10 +52,10 @@
 			return (1);								\
 		else if (cpusupport_ ## arch_feature ## _init_ ## enabled)			\
 			return (0);								\
-		cpusupport_ ## arch_feature ## _present_ ## enabled =				\
+		cpusupport_ ## arch_feature ## _present_ ## enabled = 				\
 		    cpusupport_ ## arch_feature ## _detect_ ## enabled();			\
 		cpusupport_ ## arch_feature ## _init_ ## enabled = 1;				\
-		return (cpusupport_ ## arch_feature ## _present_ ## enabled);			\
+		return (cpusupport_ ## arch_feature ## _present_ ## enabled); 			\
 	}											\
 	static void (* cpusupport_ ## arch_feature ## _dummyptr)(void);				\
 	static inline void									\
@@ -86,8 +86,6 @@
  * fails for any reason.
  */
 #define CPUSUPPORT_FEATURE_DECL(arch, feature)				\
-	extern int cpusupport_ ## arch ## _ ## feature ## _present_1;	\
-	extern int cpusupport_ ## arch ## _ ## feature ## _init_1;	\
 	int cpusupport_ ## arch ## _ ## feature ## _present_1 = 0;	\
 	int cpusupport_ ## arch ## _ ## feature ## _init_1 = 0;		\
 	int cpusupport_ ## arch ## _ ## feature ## _detect_1(void); \
@@ -103,10 +101,6 @@
  * compiled and linked in.
  */
 CPUSUPPORT_FEATURE(x86, aesni, X86_AESNI);
-CPUSUPPORT_FEATURE(x86, crc32, X86_CRC32);
-CPUSUPPORT_FEATURE(x86, rdrand, X86_RDRAND);
-CPUSUPPORT_FEATURE(x86, shani, X86_SHANI);
 CPUSUPPORT_FEATURE(x86, sse2, X86_SSE2);
-CPUSUPPORT_FEATURE(x86, ssse3, X86_SSSE3);
 
 #endif /* !_CPUSUPPORT_H_ */
