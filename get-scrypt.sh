@@ -19,6 +19,7 @@ rm scrypt-${SCRYPT_VERSION}.tgz
 
 cd -
 
+# Config is not needed and causes compile issues
 sed '/#include \"scrypt_platform.h\"/d' .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt.c > Sources/CScrypt/crypto_scrypt.c
 
 cp .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt_smix.c Sources/CScrypt
