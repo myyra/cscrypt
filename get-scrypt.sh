@@ -19,8 +19,8 @@ rm scrypt-${SCRYPT_VERSION}.tgz
 
 cd -
 
-# Config is not needed and causes compile issues
-sed '/#include \"scrypt_platform.h\"/d' .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt.c > Sources/CScrypt/crypto_scrypt.c
+# Config is not needed since we're not using optimizations and causes compile issues
+sed '/#include \"platform.h\"/d' .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt.c > Sources/CScrypt/crypto_scrypt.c
 
 cp .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt_smix.c Sources/CScrypt
 cp .scrypt/scrypt-${SCRYPT_VERSION}/libcperciva/alg/sha256.c Sources/CScrypt
@@ -32,6 +32,7 @@ cp .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt.h Sources/CScrypt/i
 cp .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt_smix.h Sources/CScrypt/include
 cp .scrypt/scrypt-${SCRYPT_VERSION}/lib/crypto/crypto_scrypt_smix_sse2.h Sources/CScrypt/include
 cp .scrypt/scrypt-${SCRYPT_VERSION}/libcperciva/alg/sha256.h Sources/CScrypt/include
+cp .scrypt/scrypt-${SCRYPT_VERSION}/libcperciva/alg/sha256_shani.h Sources/CScrypt/include
 cp .scrypt/scrypt-${SCRYPT_VERSION}/libcperciva/cpusupport/cpusupport.h Sources/CScrypt/include
 cp .scrypt/scrypt-${SCRYPT_VERSION}/libcperciva/util/insecure_memzero.h Sources/CScrypt/include
 cp .scrypt/scrypt-${SCRYPT_VERSION}/libcperciva/util/warnp.h Sources/CScrypt/include
